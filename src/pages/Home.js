@@ -1,6 +1,8 @@
 import axios from "axios"
 import Cards from '../components/Cards'
 import { useEffect, useState } from "react"
+import Header from "../components/Header"
+import Pagination from "../components/Pagination"
 
 const Home = () => {
   const [characters, setCharacters] = useState()
@@ -9,11 +11,15 @@ const Home = () => {
   const url = `https://rickandmortyapi.com/api/character/?page=${page}`
 
   const previousPage = () => {
-    setPage(page => page - 1)
+    if (page > 1) {
+      setPage(page => page - 1)
+    }
   }
 
   const nextPage = () => {
-    setPage(page => page + 1)
+    if (page < 42) {
+      setPage(page => page + 1)
+    }
   }
 
   useEffect(() => {
@@ -30,9 +36,9 @@ const Home = () => {
 
   return (
     <div className="Home">
+      <Header />
+      <Pagination page={page} previousPage={previousPage} nextPage={nextPage} />
       <Cards characters={characters} />
-      <button onClick={previousPage}>Previous</button>
-      <button onClick={nextPage}>Next</button>
     </div>
   )
 }

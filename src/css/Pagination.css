@@ -1,0 +1,25 @@
+.Pagination {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px 0;
+}
+
+button {
+    width: 120px;
+    padding: 8px 0;
+    font-size: 1.2em;
+    background-color: brown;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(219, 67, 67);
+}
+
+span {
+    color: white;
+    font-size: 1.8em;
+}
