@@ -1,0 +1,26 @@
+.Card {
+    display: flex;
+    width: fit-content;
+    background-color: rgb(63, 63, 63);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.Card img {
+    width: 220px;
+}
+
+.card-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    overflow-wrap: break-word;
+}
+
+.card-description p, .card-description h2 {
+    color: white;
+    text-align: center;
+}
