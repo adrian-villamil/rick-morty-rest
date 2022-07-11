@@ -7,6 +7,17 @@
     margin: 5px;
 }
 
+.link {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.link:hover {
+    color: rgb(139, 207, 33)
+}
+
 .Card img {
     width: 220px;
 }

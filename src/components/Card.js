@@ -1,4 +1,5 @@
 import '../css/Card.css'
+import { Link } from "react-router-dom"
 
 const Card = ({character}) => {
   
@@ -6,7 +7,7 @@ const Card = ({character}) => {
     <div className="Card">
       <img src={character.image} alt='' />
       <div className='card-description'>
-        <h2>{character.name}</h2>
+        <Link to="/character" className='link' state={{...character}}>{character.name}</Link>
         <p>{character.species}</p>
         <p>{character.gender}</p>
         <p>{character.status}</p>
