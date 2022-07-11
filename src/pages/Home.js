@@ -32,8 +32,6 @@ const Home = () => {
       })
   }, [page])
 
-  console.log(characters)
-
   return (
     <div className="Home">
       <Header />
