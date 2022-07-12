@@ -1,3 +1,36 @@
-p {
-    color: white;
+.Character {
+    display: flex;
+    flex-direction: column;
+}
+
+.row.image img {
+    border: 1px solid rgb(139, 207, 33);
+    padding: 5px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+tr td:first-child {
+    color: rgb(139, 207, 33);
+}
+
+tr td:last-child {
+    color: rgb(255, 119, 0);
+}
+
+table, td {
+    border: 1px solid rgb(139, 207, 33);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    font-size: 1.3em;
+    padding: 15px 10px;
 }
