@@ -34,3 +34,7 @@ td {
     font-size: 1.3em;
     padding: 15px 10px;
 }
+
+ul {
+    list-style-position: inside;
+}
