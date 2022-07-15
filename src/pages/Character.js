@@ -1,9 +1,16 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import '../css/Character.css'
 
 const Character = () => {
   const location = useLocation()
   const state = location.state
+  const [episodes, setEpisodes] = useState([])
+
+  useEffect(() => {
+    axios.all(state.episode.map(url => axios.get(url))).then(response => setEpisodes(response))
+  })
 
   return (
     <div className="Character">
@@ -40,6 +47,10 @@ const Character = () => {
             <tr>
               <td>Created</td>
               <td>{state.created}</td>
+            </tr>
+            <tr>
+              <td>Episodes</td>
+              <td><ul>{episodes.map(episode => <li key={episode.data.id}>{episode.data.name}</li>)}</ul></td>
             </tr>
           </tbody>
         </table>
