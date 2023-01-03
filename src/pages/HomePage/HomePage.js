@@ -1,9 +1,9 @@
 import axios from "axios";
-import { CardList } from '../components/CardList/CardList';
+import { CardList } from '../../components/CardList/CardList';
 import { useEffect, useState } from "react";
-import { Header } from "../components/Header/Header";
-import { Card } from "../components/Card/Card";
-import { Pagination } from "../components/Pagination/Pagination";
+import { Header } from "../../components/Header/Header";
+import { Card } from "../../components/Card/Card";
+import { Pagination } from "../../components/Pagination/Pagination";
 
 const URL = 'https://rickandmortyapi.com/api/character/?page=1';
 
