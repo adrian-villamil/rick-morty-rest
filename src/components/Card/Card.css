@@ -1,7 +1,7 @@
 .Card {
     display: flex;
     width: fit-content;
-    background-color: rgb(63, 63, 63);
+    background-color: #2F4858;
     border-radius: 10px;
     overflow: hidden;
     margin: 5px;
@@ -31,7 +31,7 @@
     overflow-wrap: break-word;
 }
 
-.card-description p, .card-description h2 {
-    color: white;
+.card-description p, .card-description h3 {
+    color: #00A17D;
     text-align: center;
 }
