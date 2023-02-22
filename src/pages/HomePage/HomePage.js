@@ -4,22 +4,26 @@ import { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Header";
 import { Card } from "../../components/Card/Card";
 import { Pagination } from "../../components/Pagination/Pagination";
+import { useSearchParams } from "react-router-dom";
 
-const URL = 'https://rickandmortyapi.com/api/character/?page=1';
+const URL = 'https://rickandmortyapi.com/api/character/';
 
 const HomePage = () => {
-  const [currentPage, setCurrentPage] = useState(URL);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryPage = searchParams.get('page') ?? '1';
+  const [page, setPage] = useState(Number(queryPage));
+  const currentPage = `${URL}?page=${page}`;
   const [nextPage, setNextPage] = useState('');
   const [previousPage, setPreviousPage] = useState('');
   const [characters, setCharacters] = useState([]);
 
   const toNextPage = () => {
-    setCurrentPage(nextPage);
-  }
+    setPage(p => p + 1);
+  };
 
   const toPreviousPage = () => {
-    setCurrentPage(previousPage);
-  }
+    setPage(p => p - 1);
+  };
 
   useEffect(() => {
     axios.get(currentPage)
@@ -27,11 +31,12 @@ const HomePage = () => {
         setNextPage(response.data.info.next);
         setPreviousPage(response.data.info.prev);
         setCharacters(response.data.results);
+        setSearchParams({ page: page });
       })
       .catch((error) => {
         console.log(error);
       })
-  }, [currentPage]);
+  }, [page]);
 
   return (
     <div className="Home">
