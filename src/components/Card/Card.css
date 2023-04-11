@@ -7,14 +7,14 @@
     margin: 5px;
 }
 
-.link {
+.Card-link {
     text-decoration: none;
-    color: white;
+    color: rgb(72, 168, 27);
     font-size: 1.2em;
     text-align: center;
 }
 
-.link:hover {
+.Card-link:hover {
     color: rgb(139, 207, 33)
 }
 
