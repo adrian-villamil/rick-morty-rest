@@ -29,13 +29,13 @@ const CharacterPage = () => {
 
   return (
     <div className="CharacterPage">
-      <button onClick={returnToHomePage}>Volver atrás</button>
+      <button onClick={returnToHomePage}>Go back</button>
       <h3>{character.name}</h3>
       <img src={character.image} alt='character' />
       <table>
         <thead>
           <tr>
-            <th colSpan={2}>Datos</th>
+            <th colSpan={2}>Biography</th>
           </tr>
         </thead>
         <tbody>

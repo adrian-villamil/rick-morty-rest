@@ -1,9 +1,8 @@
 import axios from "axios";
-import { CardList } from '../../components/CardList/CardList';
+import { CardList } from '../../components/CardList';
 import { useEffect, useState } from "react";
-import { Header } from "../../components/Header/Header";
-import { Card } from "../../components/Card/Card";
-import { Pagination } from "../../components/Pagination/Pagination";
+import { Card } from "../../components/Card";
+import { Pagination } from "../../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 
 const URL = 'https://rickandmortyapi.com/api/character/';
@@ -40,7 +39,6 @@ const HomePage = () => {
 
   return (
     <div className="Home">
-      <Header />
       <Pagination
         previousPage={previousPage}
         nextPage={nextPage}
