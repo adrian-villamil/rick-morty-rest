@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import './CharacterPage.css';
+import { DivWrapper, Table } from "./styles";
 
 const URL = 'https://rickandmortyapi.com/api/character/';
 
@@ -28,11 +28,11 @@ const CharacterPage = () => {
   };
 
   return (
-    <div className="CharacterPage">
+    <DivWrapper>
       <button onClick={returnToHomePage}>Go back</button>
       <h3>{character.name}</h3>
       <img src={character.image} alt='character' />
-      <table>
+      <Table>
         <thead>
           <tr>
             <th colSpan={2}>Biography</th>
@@ -68,8 +68,8 @@ const CharacterPage = () => {
             <td>{character.created}</td>
           </tr>
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </DivWrapper>
   );
 };
 

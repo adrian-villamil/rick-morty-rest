@@ -1,10 +1,10 @@
-import './CardList.css';
+import { CardListWrapper } from "./styles";
 
 const CardList = (props) => {
   return (
-    <div className="CardList">
+    <CardListWrapper>
       {props.children}
-    </div>
+    </CardListWrapper>
   );
 };
 

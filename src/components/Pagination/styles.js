@@ -1,11 +1,13 @@
-.Pagination {
+import styled from "styled-components";
+
+export const PaginationWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-}
+`;
 
-.pagination-button {
+export const Button = styled.button`
   width: 100px;
   height: 30px;
   border: 1px solid rgb(0, 162, 255);
@@ -14,9 +16,8 @@
   font-size: 1.2em;
   background-color: #005261;
   transition: background-color 0.3s;
-}
-
-.pagination-button:enabled:hover {
-  background-color: #008299;
-  cursor: pointer;
-}
+  &:enabled:hover {
+    background-color: #008299;
+    cursor: pointer;
+  }
+`;

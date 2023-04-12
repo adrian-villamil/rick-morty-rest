@@ -1,23 +1,21 @@
-import './Pagination.css';
+import { Button, PaginationWrapper } from "./styles";
 
 const Pagination = ({ previousPage, nextPage, toPreviousPage, toNextPage }) => {
   return (
-    <div className="Pagination">
-      <button
-        className='pagination-button'
+    <PaginationWrapper>
+      <Button
         onClick={toPreviousPage}
         disabled={!previousPage}
       >
         Previous
-      </button>
-      <button
-        className='pagination-button'
+      </Button>
+      <Button
         onClick={toNextPage}
         disabled={!nextPage}
       >
         Next
-      </button>
-    </div>
+      </Button>
+    </PaginationWrapper>
   );
 };
 

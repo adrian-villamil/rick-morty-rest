@@ -1,12 +1,12 @@
-import './Header.css';
 import HeaderIcon from '../../assets/header-icon.svg';
+import { HeaderWrapper } from './styles';
 
 const Header = () => {
 
   return (
-    <div className="Header">
+    <HeaderWrapper>
       <img src={HeaderIcon} alt='header-icon' />
-    </div>
+    </HeaderWrapper>
   );
 };
 
