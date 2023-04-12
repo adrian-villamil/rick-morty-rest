@@ -30,7 +30,8 @@ export const CardDescription = styled.div`
 export const Link = styled(LinkRouter)`
   text-decoration: none;
   color: rgb(72, 168, 27);
-  font-size: 1.2em;
+  font-size: 1.3em;
+  font-weight: 700;
   text-align: center;
   &:hover {
     color: rgb(139, 207, 33);
