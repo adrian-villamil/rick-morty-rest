@@ -1,7 +1,7 @@
 import axios from "axios";
 import { CardList } from '../../components/CardList';
 import { useEffect, useState } from "react";
-import { Card } from "../../components/Card";
+import { CardItem } from "../../components/CardItem";
 import { Pagination } from "../../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 
@@ -47,7 +47,7 @@ const HomePage = () => {
       />
       <CardList>
         {!!characters && characters.map(character => (
-          <Card
+          <CardItem
             key={!!character && character.id}
             character={character}
           />

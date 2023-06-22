@@ -1,6 +1,6 @@
 import { CardDescription, CardWrapper, Img, Link } from './styles';
 
-const Card = ({ character }) => {
+export const CardItem = ({ character }) => {
 
   return (
     <CardWrapper>
@@ -14,5 +14,3 @@ const Card = ({ character }) => {
     </CardWrapper>
   );
 };
-
-export { Card };
