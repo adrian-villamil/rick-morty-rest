@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px 0;
-  background-color: rgb(139, 207, 33);
+  min-height: 50px;
+  box-shadow: 0 0 2px black;
+`;
+
+export const NavIcon = styled.img`
+  width: 300px;
 `;
