@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+export const HomeDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  flex: 1;
+`;
+
 export const DivContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

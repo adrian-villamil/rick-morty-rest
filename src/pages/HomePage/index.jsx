@@ -1,12 +1,12 @@
 import CharactersImage from '../../assets/rick-and-morty-characters.png';
 import LocationsImage from '../../assets/rick-and-morty-locations.jpg';
 import EpisodesImage from '../../assets/rick-and-morty-episodes.jpg';
-import { DivContainer, DivItem, Image } from './styles';
+import { DivContainer, DivItem, HomeDiv, Image } from './styles';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   return (
-    <>
+    <HomeDiv>
       <DivContainer>
         <DivItem>
           <Link to='/character'>
@@ -30,7 +30,7 @@ const HomePage = () => {
           <p>Description</p>
         </DivItem>
       </DivContainer>
-    </>
+    </HomeDiv>
   );
 };
 

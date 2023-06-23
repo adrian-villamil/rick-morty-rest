@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CardItem } from "../../components/CardItem";
 import { Pagination } from "../../components/Pagination";
 import { useSearchParams } from "react-router-dom";
+import { CharactersDiv } from "./styles";
 
 const URL = 'https://rickandmortyapi.com/api/character/';
 
@@ -38,7 +39,7 @@ export const CharactersPage = () => {
   }, [page]);
 
   return (
-    <div className="Home">
+    <CharactersDiv>
       <Pagination
         previousPage={previousPage}
         nextPage={nextPage}
@@ -59,6 +60,6 @@ export const CharactersPage = () => {
         toPreviousPage={toPreviousPage}
         toNextPage={toNextPage}
       />
-    </div>
+    </CharactersDiv>
   );
 };
