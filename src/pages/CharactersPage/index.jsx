@@ -1,9 +1,7 @@
-import axios from "axios";
 import { CardList } from '../../components/CardList';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CardItem } from "../../components/CardItem";
 import { Pagination } from "../../components/Pagination";
-import { useSearchParams } from "react-router-dom";
 import { CharactersDiv } from "./styles";
 import { useAxios } from "../../hooks/useAxios";
 
