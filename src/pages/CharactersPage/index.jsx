@@ -5,58 +5,45 @@ import { CardItem } from "../../components/CardItem";
 import { Pagination } from "../../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 import { CharactersDiv } from "./styles";
+import { useAxios } from "../../hooks/useAxios";
 
 const URL = 'https://rickandmortyapi.com/api/character/';
 
 export const CharactersPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const queryPage = searchParams.get('page') ?? '1';
-  const [page, setPage] = useState(Number(queryPage));
-  const currentPage = `${URL}?page=${page}`;
-  const [nextPage, setNextPage] = useState('');
-  const [previousPage, setPreviousPage] = useState('');
-  const [characters, setCharacters] = useState([]);
+  const [page, setPage] = useState(1);
+  const {isLoading, error, data} = useAxios(`character/?page=${page}`);
+
+  if (isLoading) return <CharactersDiv><p>Is loading...</p></CharactersDiv>;
+
+  if (error) return <CharactersDiv><p>There was an error:</p></CharactersDiv>;
 
   const toNextPage = () => {
-    setPage(p => p + 1);
+    setPage(page => page + 1);
   };
 
   const toPreviousPage = () => {
-    setPage(p => p - 1);
+    setPage(page => page - 1);
   };
-
-  useEffect(() => {
-    axios.get(currentPage)
-      .then((response) => {
-        setNextPage(response.data.info.next);
-        setPreviousPage(response.data.info.prev);
-        setCharacters(response.data.results);
-        setSearchParams({ page: page });
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }, [page]);
 
   return (
     <CharactersDiv>
       <Pagination
-        previousPage={previousPage}
-        nextPage={nextPage}
+        previousPage={data?.info.prev}
+        nextPage={data?.info.next}
         toPreviousPage={toPreviousPage}
         toNextPage={toNextPage}
       />
       <CardList>
-        {!!characters && characters.map(character => (
+        {data?.results.map(character => (
           <CardItem
-            key={!!character && character.id}
+            key={character.id}
             character={character}
           />
         ))}
       </CardList>
       <Pagination
-        previousPage={previousPage}
-        nextPage={nextPage}
+        previousPage={data?.info.prev}
+        nextPage={data?.info.next}
         toPreviousPage={toPreviousPage}
         toNextPage={toNextPage}
       />
