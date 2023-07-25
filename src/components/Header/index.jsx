@@ -1,13 +1,22 @@
-import { NavLink } from 'react-router-dom';
-import RickAndMortyLogo from '../../assets/rick-and-morty-title.png';
-import { HeaderWrapper, NavIcon } from './styles';
+import RickIcon from '../../assets/icons8-rick-sanchez.svg';
+import MortyIcon from '../../assets/icons8-morty-smith.svg';
+import { HeaderWrapper, NavIcon, NavLink } from './styles';
 
 const Header = () => {
 
   return (
     <HeaderWrapper>
       <NavLink to='/'>
-        <NavIcon src={RickAndMortyLogo} alt='header-icon' />
+        Home
+      </NavLink>
+      <NavLink to='/character'>
+        Characters
+      </NavLink>
+      <NavLink to='/location'>
+        Locations
+      </NavLink>
+      <NavLink to='/episode'>
+        Episodes
       </NavLink>
     </HeaderWrapper>
   );
