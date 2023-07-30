@@ -5,11 +5,10 @@ const BASE_URL = 'https://rickandmortyapi.com/api';
 
 export const useAxios = (url) => {
   const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
     axios.get(`${BASE_URL}/${url}`)
       .then((response) => {
         setData(response.data);
@@ -18,9 +17,9 @@ export const useAxios = (url) => {
         setError(error);
       })
       .finally(() => {
-        setIsLoading(false);
+        setLoading(false);
       });
   }, [url]);
 
-  return { isLoading, error, data };
+  return { loading, error, data };
 };
