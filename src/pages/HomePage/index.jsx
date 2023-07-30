@@ -1,36 +1,25 @@
 import { CardList } from '../../components/CardList';
 import { useState } from "react";
 import { CardItem } from "../../components/CardItem";
-import { Pagination } from "../../components/Pagination";
 import { HomeWrapper } from "./styles";
 import { useAxios } from "../../hooks/useAxios";
-
-const URL = 'https://rickandmortyapi.com/api/character/';
+import { Paginate } from '../../components/Paginate';
 
 export const HomePage = () => {
   const [page, setPage] = useState(1);
-  const {isLoading, error, data} = useAxios(`character/?page=${page}`);
+  const { loading, error, data } = useAxios(`character/?page=${page}`);
 
-  if (isLoading) return <HomeWrapper><p>Is loading...</p></HomeWrapper>;
+  if (loading) return <HomeWrapper><p>Is loading...</p></HomeWrapper>;
 
   if (error) return <HomeWrapper><p>There was an error:</p></HomeWrapper>;
 
-  const toNextPage = () => {
-    setPage(page => page + 1);
-  };
-
-  const toPreviousPage = () => {
-    setPage(page => page - 1);
+  const onPageChange = (pageNumber) => {
+    setPage(pageNumber);
   };
 
   return (
     <HomeWrapper>
-      <Pagination
-        previousPage={data?.info.prev}
-        nextPage={data?.info.next}
-        toPreviousPage={toPreviousPage}
-        toNextPage={toNextPage}
-      />
+      <Paginate pageCount={data?.info.pages} onPageChange={onPageChange} />
       <CardList>
         {data?.results.map(character => (
           <CardItem
@@ -39,12 +28,7 @@ export const HomePage = () => {
           />
         ))}
       </CardList>
-      <Pagination
-        previousPage={data?.info.prev}
-        nextPage={data?.info.next}
-        toPreviousPage={toPreviousPage}
-        toNextPage={toNextPage}
-      />
+      {/* <Paginate pageCount={data?.info.pages} onPageChange={onPageChange} /> */}
     </HomeWrapper>
   );
 };
