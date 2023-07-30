@@ -1,37 +1,50 @@
-import CharactersImage from '../../assets/rick-and-morty-characters.png';
-import LocationsImage from '../../assets/rick-and-morty-locations.jpg';
-import EpisodesImage from '../../assets/rick-and-morty-episodes.jpg';
-import { DivContainer, DivItem, HomeDiv, Image } from './styles';
-import { Link } from 'react-router-dom';
+import { CardList } from '../../components/CardList';
+import { useState } from "react";
+import { CardItem } from "../../components/CardItem";
+import { Pagination } from "../../components/Pagination";
+import { HomeWrapper } from "./styles";
+import { useAxios } from "../../hooks/useAxios";
 
-const HomePage = () => {
+const URL = 'https://rickandmortyapi.com/api/character/';
+
+export const HomePage = () => {
+  const [page, setPage] = useState(1);
+  const {isLoading, error, data} = useAxios(`character/?page=${page}`);
+
+  if (isLoading) return <HomeWrapper><p>Is loading...</p></HomeWrapper>;
+
+  if (error) return <HomeWrapper><p>There was an error:</p></HomeWrapper>;
+
+  const toNextPage = () => {
+    setPage(page => page + 1);
+  };
+
+  const toPreviousPage = () => {
+    setPage(page => page - 1);
+  };
+
   return (
-    <HomeDiv>
-      <DivContainer>
-        <DivItem>
-          <Link to='/character'>
-            <Image src={CharactersImage} alt="characters-image" />
-          </Link>
-          <h1>Characters</h1>
-          <p>Description</p>
-        </DivItem>
-        <DivItem>
-          <Link to='/location'>
-            <Image src={LocationsImage} alt="locations-image" />
-          </Link>
-          <h1>Locations</h1>
-          <p>Description</p>
-        </DivItem>
-        <DivItem>
-          <Link to='/episode'>
-            <Image src={EpisodesImage} alt="episodes-image" />
-          </Link>
-          <h1>Episodes</h1>
-          <p>Description</p>
-        </DivItem>
-      </DivContainer>
-    </HomeDiv>
+    <HomeWrapper>
+      <Pagination
+        previousPage={data?.info.prev}
+        nextPage={data?.info.next}
+        toPreviousPage={toPreviousPage}
+        toNextPage={toNextPage}
+      />
+      <CardList>
+        {data?.results.map(character => (
+          <CardItem
+            key={character.id}
+            character={character}
+          />
+        ))}
+      </CardList>
+      <Pagination
+        previousPage={data?.info.prev}
+        nextPage={data?.info.next}
+        toPreviousPage={toPreviousPage}
+        toNextPage={toNextPage}
+      />
+    </HomeWrapper>
   );
 };
-
-export { HomePage };
