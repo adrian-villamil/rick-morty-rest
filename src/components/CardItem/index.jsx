@@ -1,16 +1,17 @@
-import { CardDescription, CardWrapper, Img, Link } from './styles';
+import { CardContent, CardInfo, CardWrapper, Img, Link, Span } from './styles';
 
 export const CardItem = ({ character }) => {
 
   return (
     <CardWrapper>
       <Img src={character.image} alt='Character' />
-      <CardDescription>
+      <CardContent>
         <Link to={`/character/${character.id}`}>{character.name}</Link>
-        <p>{character.species}</p>
-        <p>{character.gender}</p>
-        <p>{character.status}</p>
-      </CardDescription>
+        <CardInfo>
+          <Span status={character.status}>{character.species}</Span>
+          <Span status={character.status}>{character.status}</Span>
+        </CardInfo>
+      </CardContent>
     </CardWrapper>
   );
 };
