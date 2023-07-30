@@ -5,7 +5,7 @@ import { DivWrapper, Table } from "./styles";
 
 const URL = 'https://rickandmortyapi.com/api/character/';
 
-export const SingleCharacterPage = () => {
+export const CharacterPage = () => {
   const [character, setCharacter] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
