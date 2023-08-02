@@ -1,23 +1,38 @@
 import styled from "styled-components";
+import ReactPaginate from "react-paginate";
 
-export const PaginationWrapper = styled.div`
+export const PaginateWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 10px;
+  padding: 20px;
 `;
 
-export const Button = styled.button`
-  width: 100px;
-  height: 30px;
-  border: 1px solid rgb(0, 162, 255);
-  border-radius: 8px;
-  margin: 0 5px;
-  font-size: 1.2em;
-  background-color: #005261;
-  transition: background-color 0.3s;
-  &:enabled:hover {
-    background-color: #008299;
+export const ReactPagination = styled(ReactPaginate)`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  
+  & li {
+    float: left;
+    margin: 0 4px;
+  }
+  
+  & a {
+    display: block;
+    padding: 8px 16px;
+    color: black;
+    border: 1px solid #dddddd;
     cursor: pointer;
+    transition: background-color .3s;
+
+    &:hover:not(.selected > a) {
+      background-color: #dddddd;
+    }
+  }
+
+  & .selected > a {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
   }
 `;

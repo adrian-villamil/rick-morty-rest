@@ -1,22 +1,18 @@
-import { Button, PaginationWrapper } from "./styles";
+import { ReactPagination, PaginateWrapper } from "./styles";
 
-const Pagination = ({ previousPage, nextPage, toPreviousPage, toNextPage }) => {
+export const Pagination = ({ pageCount, onPageChange }) => {
+  const handlePageChange = (data) => {
+    onPageChange(data.selected + 1);
+  };
   return (
-    <PaginationWrapper>
-      <Button
-        onClick={toPreviousPage}
-        disabled={!previousPage}
-      >
-        Previous
-      </Button>
-      <Button
-        onClick={toNextPage}
-        disabled={!nextPage}
-      >
-        Next
-      </Button>
-    </PaginationWrapper>
+    <PaginateWrapper>
+      <ReactPagination
+        previousLabel='&laquo;'
+        nextLabel='&raquo;'
+        breakLabel='...'
+        pageCount={pageCount}
+        onPageChange={handlePageChange}
+      />
+    </PaginateWrapper>
   );
 };
-
-export { Pagination };
