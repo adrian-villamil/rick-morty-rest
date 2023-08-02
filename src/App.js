@@ -12,7 +12,7 @@ function App() {
           <Route path='/' element={<AppLayout />}>
             <Route index element={<HomePage />} />
             <Route path='character/:id' element={<CharacterPage />} />
-            <Route path='*' element={<p style={{color: 'white'}}>404: Not found</p>} />
+            <Route path='*' element={<p>404: Not found</p>} />
           </Route>
         </Routes>
       </BrowserRouter>
