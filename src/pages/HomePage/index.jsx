@@ -27,7 +27,11 @@ export const HomePage = () => {
           />
         ))}
       </CardList>
-      <Pagination pageCount={data?.info.pages} onPageChange={onPageChange} />
+      <Pagination
+        pageCount={data?.info.pages}
+        onPageChange={onPageChange}
+        currentPage={searchParams.get('page')}
+      />
     </HomeWrapper>
   );
 };
