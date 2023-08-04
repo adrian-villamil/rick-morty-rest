@@ -7,11 +7,12 @@ import { useSearchParams } from 'react-router-dom';
 
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams({ page: '1' });
-  const { loading, error, data } = useAxios(`character/?page=${searchParams.get('page')}`);
+  const currentPage = searchParams.get('page');
+  const { loading, error, data } = useAxios(`character/?page=${currentPage}`);
 
   if (loading) return <HomeWrapper><p>Is loading...</p></HomeWrapper>;
 
-  if (error) return <HomeWrapper><p>There was an error:</p></HomeWrapper>;
+  if (error) return <HomeWrapper><p>{error.response.status}: {error.response.data.error}</p></HomeWrapper>;
 
   const onPageChange = (pageNumber) => {
     setSearchParams({ page: pageNumber });
@@ -30,7 +31,7 @@ export const HomePage = () => {
       <Pagination
         pageCount={data?.info.pages}
         onPageChange={onPageChange}
-        currentPage={searchParams.get('page')}
+        currentPage={currentPage}
       />
     </HomeWrapper>
   );
