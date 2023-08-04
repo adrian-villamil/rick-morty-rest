@@ -16,10 +16,3 @@ export const NavLink = styled(NavLinkRouter)`
     background-color: rgb(151, 206, 76);
   }
 `;
-
-export const NavIcon = styled.img`
-  width: 60px;
-  &:hover {
-    background-color: rgb(255, 255, 255);
-  }
-`;

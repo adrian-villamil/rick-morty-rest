@@ -1,4 +1,4 @@
-import { HeaderWrapper, NavIcon, NavLink } from './styles';
+import { HeaderWrapper, NavLink } from './styles';
 
 const Header = () => {
 
