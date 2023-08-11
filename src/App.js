@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage';
 import { CharacterPage } from './pages/CharacterPage';
 import './App.css';
 import { AppLayout } from './layout/AppLayout';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
           <Route path='/' element={<AppLayout />}>
             <Route index element={<HomePage />} />
             <Route path='character/:id' element={<CharacterPage />} />
-            <Route path='*' element={<p>404: Not found</p>} />
+            <Route path='*' element={<NotFoundPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
