@@ -5,13 +5,14 @@ export const useAxios = (url, params) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { page, name } = params;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get(url, { params });
+        const response = await api.get(url, { params: { page, name } });
         setData(response.data);
-      } catch(error) {
+      } catch (error) {
         setError(error);
       } finally {
         setLoading(false);
@@ -22,7 +23,8 @@ export const useAxios = (url, params) => {
     return () => {
       api.interceptors.response.eject(responseInterceptor);
     }
-  }, [url, params]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url, page, name]);
 
   return { loading, error, data };
 };
