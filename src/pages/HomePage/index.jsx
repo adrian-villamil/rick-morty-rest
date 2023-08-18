@@ -3,7 +3,7 @@ import { CardItem } from "../../components/CardItem";
 import { HomeWrapper } from "./styles";
 import { useAxios } from "../../hooks/useAxios";
 import { Pagination } from '../../components/Pagination';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Searcher } from '../../components/Searcher';
 import { useEffect } from 'react';
 
@@ -11,14 +11,14 @@ export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams({ page: '1' });
   const currentPage = searchParams.get('page') ?? '';
   const nameQuery = searchParams.get('name') ?? '';
-  const { loading, error, data } = useAxios('character/', { page: currentPage, name: nameQuery });
+  const { loading, data } = useAxios('character/', { page: currentPage, name: nameQuery });
 
   useEffect(() => {
     if (currentPage === '') {
       searchParams.delete('page');
       setSearchParams(searchParams);
     }
-  }, []);
+  }, [currentPage]);
 
   if (loading) return <HomeWrapper><p>Is loading...</p></HomeWrapper>;
 
