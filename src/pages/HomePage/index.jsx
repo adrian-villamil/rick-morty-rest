@@ -18,6 +18,7 @@ export const HomePage = () => {
       searchParams.delete('page');
       setSearchParams(searchParams);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   if (loading) return <HomeWrapper><p>Is loading...</p></HomeWrapper>;
